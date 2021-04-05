@@ -16,9 +16,10 @@ class DemoEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $demo
+    public function __construct($demo)
     {
-        //
+          $this->demo=$demo;
     }
 
     /**
@@ -28,6 +29,10 @@ class DemoEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->form('190103045>@stu.sdu.edu.kz')
+                    ->view('mails.demo')
+                    ->text('mails.demo_plain')
+                    ->with(['testVarOne'=>'1','testVarTwo'=>'2',]);
+    }
     }
 }
